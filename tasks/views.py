@@ -4,6 +4,7 @@ from django.contrib.auth.models import User
 from django.contrib.auth import login, logout, authenticate
 from django.db import IntegrityError
 from .forms import TaskForm
+from .models import Task
 
 # from django.views.decorators.csrf import csrf_protect
 
@@ -38,9 +39,8 @@ def signup(request):
         })
         
 def tasks(request):
-    return render(request, 'tasks.html', {
-        'form': TaskForm
-    })
+    tasks = Task.objects.filter(user=request.user, date_completed__isnull=True)
+    return render(request, 'tasks.html', {'tasks': tasks})
 
 def create_tasks(request):
     if request.method == 'GET':
