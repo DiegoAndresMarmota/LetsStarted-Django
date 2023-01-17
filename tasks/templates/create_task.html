@@ -2,19 +2,23 @@
 
 {% block content %}
 
-    <h1> Create Task </h1>
+<main class="container">
+    <div class="row">
+        <div class="col-md-4 offset-md-4 mt-5">
+            <form action='/tasks/create/' method='POST' class=" card card-body">
+                <h1> Crear Tarea </h1>
 
-    {{error}}
-
-    <form action='/tasks/create/' method='POST'>
-        {% csrf_token %}
-
-        {{form}}
-
-        <button>
-            Guardar
-        </button>
-
-    </form>
+                {{error}}
+                {% csrf_token %}
+        
+                {{form}}
+        
+                <button class="btn btn-primary mt-3">
+                    Guardar
+                </button>
+            </form>
+        </div>
+    </div>
+</main>
 
 {% endblock %}

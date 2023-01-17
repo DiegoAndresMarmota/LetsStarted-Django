@@ -2,16 +2,21 @@
 
 {% block content %}
 
-<h1> Sign In </h1>
-
-{{error}}
-
-<form action="/signin/" method="POST">
-    {% csrf_token %}
-    {{form.as_p}}
-    <button>
-        Sign In
-    </button>
-</form>
+<main class"container">
+    <div class="row">
+        <div class="col-md-4 offset-md-4 mt-5">
+            <form method="POST" class="card card-body text-center">
+                <h1> Ingresar </h1>
+                {{error}}
+                {% csrf_token %}
+                {{form}}
+            <button class="my-3">
+                Enviar
+            </button>
+            
+            </form>
+        </div>
+    </div>
+</main>
 
 {% endblock %}
